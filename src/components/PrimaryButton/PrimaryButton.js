@@ -3,7 +3,7 @@ import {colors, shadow, typography} from "@/theme";
 
 const PrimaryButton = (props) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={props.onPress}>
             <View style={[shadow.primary,{
                 height: 50,
                 marginVertical:12,
@@ -11,6 +11,7 @@ const PrimaryButton = (props) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: props.optionalColor ? colors.secondary : colors.primary
+
             }]}>
                 <Text
                     style={

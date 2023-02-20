@@ -17,6 +17,7 @@ const Login = (props) => {
                 paddingTop: Platform.OS === "android" ? 24 : 0,
                 padding:24
             }}
+            behavior="position"
         >
             <View style={{
                 margin: 14,
@@ -45,11 +46,11 @@ const Login = (props) => {
                     placeholder="Enter your password"
                     label="Password"
                 />
-                <PrimaryButton
+                <PrimaryButton onPress={() => onSubmit()}
                     buttonText="Login"
                 />
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => onNavigateToRegister()}>
                 <Text
                 style={[typography.label,{
                     marginVertical:24,

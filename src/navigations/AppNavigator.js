@@ -2,7 +2,9 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import Splash from "../screens/Splash/Splash";
 import AuthStack from "./AuthStack";
+import HomeStack from "./HomeStack";
 import MainTab from "./MainTab";
+import TabNavigation from "@/navigations/TabNavigation";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +28,7 @@ const AppNavigator = () => {
                 />
                 <Stack.Screen
                     name={"Main Tab"}
-                    component={MainTab}
+                    component={HomeStack}
                     options={{
                         headerShown: false
                     }}
