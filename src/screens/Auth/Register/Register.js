@@ -69,12 +69,12 @@ const Register = (props) => {
                     buttonText="Register"
                 />
             </View>
-            <TouchableOpacity onPress={() => onNavigateToLogin()}>
+            <TouchableOpacity onPress={() => onNavigateToLogin()} >
                 <Text
                     style={[typography.label,{
                         marginVertical:24,
                         alignSelf:'center',
-                        color:colors.darkGray
+                        color:colors.darkGray,
                     }]}
                 >Already have account?</Text>
             </TouchableOpacity>

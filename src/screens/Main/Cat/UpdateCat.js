@@ -24,7 +24,6 @@ const UpdateCat = (props) => {
         const data = {
             catName: name, race, color, gender
         }
-        console.log(data)
         await updateCat({
             id,
             data

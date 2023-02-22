@@ -1,8 +1,10 @@
 import {Button, Text, View} from "react-native";
+import {logout} from "@/utils/token";
 
 const Settings = (props) => {
-    const onLogout = () => {
-        props.navigation.navigate("Auth Stack")
+    const onLogout = async () => {
+        await logout()
+        props.navigation.navigate("Login")
     }
     return (
         <View>

@@ -38,11 +38,6 @@ const Cat = (props) => {
             setLoading(false)
         }
     }
-
-    useEffect(() => {
-        setCat(data?.data)
-    }, [data, loading])
-
     const RenderCat = (cat) => {
         return (
             <View style={styles.card}>
@@ -84,10 +79,15 @@ const Cat = (props) => {
             </View>
         )
     }
+
+    useEffect(() => {
+        setCat(data?.data)
+    }, [data, loading])
     return (
         <View style={styles.container}>
 
-            {data?.cats?.length > 0 ?
+            {
+                data?.cats?.length > 0 ?
                 <FlatList
                     data={data.cats}
                     renderItem={(data) =>
@@ -143,7 +143,6 @@ const Cat = (props) => {
 
         </View>
     )
-
 }
 export default Cat
 
