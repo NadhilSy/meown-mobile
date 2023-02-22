@@ -7,5 +7,7 @@ export const colors = {
     gray: "#ADA4A5",
     lightGray: "#DDDADA",
     border: "#F7F8F8",
-    focused:"#3F3D56"
+    focused:"#3F3D56",
+    pinky:"#FFD6EC",
+    pinkyButton:"#1AC4DB"
 }

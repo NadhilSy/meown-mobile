@@ -2,8 +2,25 @@ import {Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacit
 import {colors, typography} from "@/theme";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import FormInput from "@/components/FormInput/FormInput";
+import {useState, useContext} from "react";
+import useFetchMutation from "@/app/hooks/useFetchMutation";
+import {loginService} from "@/app/service/loginService";
+import {useNavigate} from "@/app/hooks/useNavigate";
+import {saveToken} from "@/utils/token";
 
 const Login = (props) => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+    const [error, loading, login] = useFetchMutation(loginService, async (data) => {
+        await saveToken(data?.data.token)
+        console.log(data)
+        props.navigation.navigate("Main Tab")
+    })
+    if (error){
+        console.log(error.response.request._response)
+    }
     const onNavigateToRegister = () => {
         props.navigation.navigate("Register")
     }
@@ -40,13 +57,17 @@ const Login = (props) => {
                     icon="envelope"
                     placeholder="Enter your email"
                     label="Email Address"
+                    onChange={text => setEmail(text)}
+
                 />
                 <FormInput
                     icon="key"
                     placeholder="Enter your password"
                     label="Password"
+                    onChange={text => setPassword(text)}
                 />
-                <PrimaryButton onPress={() => onSubmit()}
+                <PrimaryButton
+                    onPress={() => login({email, password})}
                     buttonText="Login"
                 />
             </View>

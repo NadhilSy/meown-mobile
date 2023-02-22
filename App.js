@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import AppNavigator from "@/navigations/AppNavigator";
 
 export default function App() {
     return (
         <View style={styles.container}>
+            <StatusBar/>
             <AppNavigator/>
         </View>
     );

@@ -33,6 +33,7 @@ const AppNavigator = () => {
                         headerShown: false
                     }}
                 />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

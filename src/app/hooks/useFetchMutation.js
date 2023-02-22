@@ -8,7 +8,7 @@ const useFetchMutation = (mutation, onSuccess) => {
         try {
             setLoading(true)
             const result = await mutation(data)
-            onSuccess?.(result)
+            await onSuccess?.(result)
         } catch (e) {
             setError(e)
         } finally {

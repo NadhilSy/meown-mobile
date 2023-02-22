@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Home, Order, Settings, Cat} from "../screens/index"
 import Icon from "@/components/Icon/Icon";
-import {TransitionPreset, TransitionPresets} from "@react-navigation/stack";
+import {TransitionPresets} from "@react-navigation/stack";
 import {options} from "@/navigations/TabNavigationOptions";
 import {colors} from "@/theme";
 const TabNavigator = createBottomTabNavigator()
@@ -15,12 +15,12 @@ const TabNavigation = () => {
             icon: 'paw'
         },{
             name: 'Cat',
-            title: 'Cat',
+            title: 'MyCat',
             component: Cat,
             icon: 'cat'
         },{
             name: 'Order',
-            title: 'Order',
+            title: 'MyOrder',
             component: Order,
             icon: 'shopping-cart'
         },{
