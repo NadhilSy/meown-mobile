@@ -27,7 +27,7 @@ axiosInstance.interceptors.response.use(
     (config) => config,
     async (error) =>{
         const responseError = error?.response?.data;
-        if (responseError.code === "X99"||responseError.code === "X01") {
+        if (error) {
             await removeToken();
         }
         return Promise.reject(error);

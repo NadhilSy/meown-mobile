@@ -19,11 +19,6 @@ const TabNavigation = () => {
             component: Cat,
             icon: 'cat'
         },{
-            name: 'Order',
-            title: 'MyOrder',
-            component: Order,
-            icon: 'shopping-cart'
-        },{
             name: 'Setting',
             title: 'Setting',
             component: Settings,

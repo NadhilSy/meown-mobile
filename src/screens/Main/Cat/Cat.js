@@ -5,11 +5,22 @@ import useFetchQuery from "@/app/hooks/useFetchQuery";
 import React, {useEffect} from "react";
 import styles from "@/screens/Main/Cat/styles";
 import {colors} from "@/theme";
-import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 
 import Button from "@/components/Button/Button";
 
 const Cat = (props) => {
+    const onChangeData = async () => {
+        try {
+            setLoading(true);
+            const result = await getAllCat();
+            setCat(result?.data?.data);
+        } catch (e) {
+            setCat([])
+            Alert.alert("", e.message)
+        } finally {
+            setLoading(false)
+        }
+    }
     const {data, fetchQuery: refetch} = useFetchQuery(getAllCat())
     const [cat, setCat] = React.useState([])
     const [loading, setLoading] = React.useState(false)
@@ -25,18 +36,6 @@ const Cat = (props) => {
                 id
             }
         })
-    }
-    const onChangeData = async () => {
-        try {
-            setLoading(true);
-            const result = await getAllCat();
-            setCat(result?.data?.data);
-        } catch (e) {
-            setCat([])
-            Alert.alert("", e.message)
-        } finally {
-            setLoading(false)
-        }
     }
     const RenderCat = (cat) => {
         return (
@@ -56,13 +55,9 @@ const Cat = (props) => {
                         color: colors.focused
                     }}>{cat?.cat?.race}</Text>
                 </View>
-                <View style={{alignItems: "flex-end"}}>
                     <Button
-                        style={{borderRadius: 20}}
-                        styleBtn={styles.button}
-                        styleTxtBtn={styles.buttonText}
+                        style={{borderRadius: 10,padding:7,marginLeft:15,backgroundColor:colors.primary,width:75,alignItems:'center'}}
                         disabled={loadingDelete}
-                        text="EDIT"
                         onPress={() => {
                             if (cat?.cat) {
                                 props.navigation.navigate("UpdateCat", {
@@ -70,12 +65,7 @@ const Cat = (props) => {
                                 })
                             }
                         }}
-                        // onPress={onNavigateToUpdate(cat?.cat?.id)}
-                        // onPress={() => {
-                        //     // props.navigation.navigate("Details", {food: food?.food})
-                        // }}/>
-                    />
-                </View>
+                    ><Text style={{color:'white'}}>Edit</Text></Button>
             </View>
         )
     }
@@ -147,7 +137,7 @@ const Cat = (props) => {
 export default Cat
 
 
-// const Cat = (props) => {
+// const Packet = (props) => {
 //     return (
 //         <ListComponent
 //             renderItem={ListItem}
@@ -159,4 +149,4 @@ export default Cat
 //     )
 // }
 //
-// export default Cat
+// export default Packet

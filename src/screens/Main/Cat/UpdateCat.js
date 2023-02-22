@@ -62,7 +62,7 @@ const UpdateCat = (props) => {
                 />
                 <PrimaryButton
                     onPress={() => onNavigateAfterUpdate()}
-                    buttonText={"Update Cat"}
+                    buttonText={"Update Packet"}
                 />
             </View>
         </KeyboardAvoidingView>

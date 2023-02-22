@@ -1,16 +1,15 @@
-import {Text, View, Alert, RefreshControl, ScrollView, FlatList, Pressable} from "react-native";
+import {Alert, FlatList, Pressable, RefreshControl, ScrollView, Text, View} from "react-native";
 import React, {useEffect, useState} from "react";
-import {readItem} from "@/utils/asyncStorageItem";
-import useFetch from "@/app/hooks/useFetch";
 
 import useFetchQuery from "@/app/hooks/useFetchQuery";
-import useFetchMutation from "@/app/hooks/useFetchMutation";
 import styles from "@/screens/Main/Home/styles";
 import {colors} from "@/theme";
 
 import {getAllPackage} from "@/app/service/packageService";
-import {getAllCat} from "@/app/service/catService";
-import Button from "@/components/Button/Button";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import Card from "@/components/Card/Card";
+import {readItem} from "@/utils/asyncStorageItem";
+import UserDetails from "@/screens/Main/Details/User/Index";
 
 const Home = (props) => {
     // const [data,error,loading] = useFetch()
@@ -32,34 +31,40 @@ const Home = (props) => {
     useEffect(() => {
         setPacket(data?.data)
     }, [data, loading])
-
-    console.log(data)
-
+    const [userInfo,setUserInfo] = useState(null)
+    const getUserData = async () => {
+        const user = await readItem("userInfo")
+        setUserInfo(user)
+    }
+    useEffect(()=>{
+        getUserData()
+    },[])
     const RenderPackage = (packet) => {
         return (
-            <Pressable onPress={()=>props.navigation.navigate("")}>
-                <View style={styles.card}>
-                    <View>
-                        <Text style={[{
-                            fontWeight: "bold",
-                            fontSize: 18,
-                            paddingLeft: 20,
-                            paddingTop: 8,
-                            color: colors.focused
-                        }]}>{packet?.packet?.packageName}</Text>
-                    </View>
-                    <View style={{alignItems: "flex-end"}}>
-                    </View>
+            <Pressable onPress={() => props.navigation.navigate("PacketDetails", {
+                packet: packet?.packet
+            })}
+                       style={{justifyContent: 'center', height: '100%', width: '50%'}}>
+                <View style={[styles.card, {justifyContent: 'center', height: 100, backgroundColor: colors.primary}]}>
+                    <Text style={[{
+                        fontWeight: "bold",
+                        fontSize: 18,
+                        paddingLeft: 20,
+                        paddingTop: 8,
+                        color: colors.white
+                    }]}>{packet?.packet?.packageName}</Text>
                 </View>
             </Pressable>
 
         )
     }
 
-
     return (
         <View style={styles.container}>
-
+            <UserDetails
+                user={userInfo}
+            />
+            <Text style={{fontWeight:'bold',fontSize:24,marginTop:30,color:colors.primary}}>Packet list</Text>
             {data?.data?.length > 0 ?
                 <FlatList
                     data={data.data}
@@ -68,6 +73,7 @@ const Home = (props) => {
                     keyExtractor={(data) => data?.item?.id}
                     onEndReachedThreshold={0.3}
                     onEndReached={onChangeData}
+                    numColumns={2}
                     refreshControl={<RefreshControl refreshing={loading} onRefresh={onChangeData}/>}
                 /> :
                 <ScrollView

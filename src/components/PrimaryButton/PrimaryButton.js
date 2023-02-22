@@ -6,11 +6,11 @@ const PrimaryButton = (props) => {
         <TouchableOpacity onPress={props.onPress}>
             <View style={[shadow.primary,{
                 height: 50,
-                marginVertical:12,
                 borderRadius: 12,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: props.optionalColor ? colors.secondary : colors.primary
+                backgroundColor: props.optionalColor ? colors.secondary : colors.primary,
+                padding:15
             }]}>
                 <Text
                     style={

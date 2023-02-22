@@ -4,7 +4,7 @@ import {colors} from "@/theme";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:colors.pinky
+        backgroundColor:colors.border
     },
     text: {
         fontSize: 18,

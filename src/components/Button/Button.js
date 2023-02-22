@@ -13,9 +13,7 @@ const Button = (props) => {
                 onPress={props.onPress}
                 disabled={props.disabled}
             >
-                <Text style={styles.buttonText}>
-                    {props.text}
-                </Text>
+                {props.children}
             </TouchableOpacity>
         </View>
     )

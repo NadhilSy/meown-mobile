@@ -4,7 +4,10 @@ import {colors} from "@/theme";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:colors.pinky
+        backgroundColor:colors.border,
+        justifyContent:'center',
+        alignItems:'center',
+        height:'100%'
     },
     text: {
         fontSize: 18,
@@ -31,7 +34,7 @@ export default StyleSheet.create({
         marginVertical: 9,
         backgroundColor: colors.white,
         margin: 20,
-        padding: 5,
+        padding: 20,
         borderRadius: 20,
         elevation:5
     }
