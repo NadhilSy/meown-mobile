@@ -19,7 +19,7 @@ const useFetch = (query, params) => {
     useEffect(() => {
         fetchQuery()
     }, [])
-    return [data, error, loading]
+    return [data, error, loading,fetchQuery]
 }
 
 export default useFetch

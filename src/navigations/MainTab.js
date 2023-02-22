@@ -8,7 +8,7 @@ const Tabs = createBottomTabNavigator();
 
 const MainTab = () => {
     return (
-        <Tabs.Navigator >
+        <Tabs.Navigator>
             <Tabs.Screen name={"Home"} component={Home}/>
             <Tabs.Screen name={"Cat"} component={Cat}/>
             <Tabs.Screen name={"Order"} component={Order}/>

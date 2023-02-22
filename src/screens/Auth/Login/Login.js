@@ -7,6 +7,7 @@ import useFetchMutation from "@/app/hooks/useFetchMutation";
 import {loginService} from "@/app/service/loginService";
 import {useNavigate} from "@/app/hooks/useNavigate";
 import {saveToken} from "@/utils/token";
+import {setItem} from "@/utils/asyncStorageItem";
 
 const Login = (props) => {
 
@@ -14,13 +15,10 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
     const [error, loading, login] = useFetchMutation(loginService, async (data) => {
+        await setItem("userInfo",data?.data.data)
         await saveToken(data?.data.token)
-        console.log(data)
-        props.navigation.navigate("Main Tab")
+        props.navigation.replace("Main Tab")
     })
-    if (error){
-        console.log(error.response.request._response)
-    }
     const onNavigateToRegister = () => {
         props.navigation.navigate("Register")
     }

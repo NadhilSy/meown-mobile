@@ -11,7 +11,6 @@ const PrimaryButton = (props) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: props.optionalColor ? colors.secondary : colors.primary
-
             }]}>
                 <Text
                     style={

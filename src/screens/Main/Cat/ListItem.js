@@ -1,27 +1,4 @@
-import {Text, View, FlatList, ScrollView, RefreshControl, Alert} from "react-native";
-import React, {useEffect} from "react";
-import useFetch from "@/app/hooks/useFetch";
-import useFetchMutation from "@/app/hooks/useFetchMutation";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import React from "react";
 
 
 // const ListItem = (props)=>{

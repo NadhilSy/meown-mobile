@@ -10,24 +10,28 @@ import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Button from "@/components/Button/Button";
 
 const Cat = (props) => {
-    const {data,fetchQuery:refetch} = useFetchQuery(getAllCat())
+    const {data, fetchQuery: refetch} = useFetchQuery(getAllCat())
     const [cat, setCat] = React.useState([])
     const [loading, setLoading] = React.useState(false)
-    const [errorDelete,loadingDelete,deleteCatMutation] = useFetchMutation(deleteCatById, refetch)
-    const onDelete = (id) = () =>{
+    const [errorDelete, loadingDelete, deleteCatMutation] = useFetchMutation(deleteCatById, refetch)
+    const onDelete = (id) = () => {
         deleteCatMutation(id);
         onChangeData();
     }
 
     const onNavigateToUpdate = (id) => {
-        props.navigation.navigate("UpdateCat")
+        props.navigation.navigate("UpdateCat", {
+            params: {
+                id
+            }
+        })
     }
     const onChangeData = async () => {
         try {
             setLoading(true);
             const result = await getAllCat();
             setCat(result?.data?.data);
-        } catch (e){
+        } catch (e) {
             setCat([])
             Alert.alert("", e.message)
         } finally {
@@ -35,35 +39,52 @@ const Cat = (props) => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setCat(data?.data)
     }, [data, loading])
 
-    const RenderCat = React.memo((cat)=>{
-        console.log(cat)
-        return(
+    const RenderCat = (cat) => {
+        return (
             <View style={styles.card}>
-                <View >
-                    <Text style={[{fontWeight:"bold", fontSize:18, paddingLeft:20, paddingTop:8, color:colors.focused}]}>{cat?.cat?.name}</Text>
-                    <Text style={{fontSize:18, paddingLeft:22, paddingBottom:5, color:colors.focused}}>{cat?.cat?.race}</Text>
+                <View>
+                    <Text style={[{
+                        fontWeight: "bold",
+                        fontSize: 18,
+                        paddingLeft: 20,
+                        paddingTop: 8,
+                        color: colors.focused
+                    }]}>{cat?.cat?.name}</Text>
+                    <Text style={{
+                        fontSize: 18,
+                        paddingLeft: 22,
+                        paddingBottom: 5,
+                        color: colors.focused
+                    }}>{cat?.cat?.race}</Text>
                 </View>
-                <View style={{alignItems: "flex-end"}} >
+                <View style={{alignItems: "flex-end"}}>
                     <Button
-                        style={{borderRadius:20}}
+                        style={{borderRadius: 20}}
                         styleBtn={styles.button}
                         styleTxtBtn={styles.buttonText}
                         disabled={loadingDelete}
                         text="EDIT"
-                        onPress={onNavigateToUpdate(cat?.cat?.id)}
-                            // onPress={() => {
-                            //     // props.navigation.navigate("Details", {food: food?.food})
-                            // }}/>
+                        onPress={() => {
+                            if (cat?.cat) {
+                                props.navigation.navigate("UpdateCat", {
+                                    id: cat?.cat.id
+                                })
+                            }
+                        }}
+                        // onPress={onNavigateToUpdate(cat?.cat?.id)}
+                        // onPress={() => {
+                        //     // props.navigation.navigate("Details", {food: food?.food})
+                        // }}/>
                     />
                 </View>
             </View>
         )
-    })
-    return(
+    }
+    return (
         <View style={styles.container}>
 
             {data?.cats?.length > 0 ?
@@ -75,14 +96,14 @@ const Cat = (props) => {
                     onEndReachedThreshold={0.3}
                     onEndReached={onChangeData}
                     refreshControl={<RefreshControl refreshing={loading} onRefresh={onChangeData}/>}
-                    />:
+                /> :
                 <ScrollView
                     refreshControl={
-                    <RefreshControl
-                        refreshing={loading}
-                        onRefresh={
-                            onChangeData
-                        }/>}><Text style={[styles.title, {alignSelf:"center"}]}>Cat is Empty</Text>
+                        <RefreshControl
+                            refreshing={loading}
+                            onRefresh={
+                                onChangeData
+                            }/>}><Text style={[styles.title, {alignSelf: "center"}]}>Cat is Empty</Text>
 
                 </ScrollView>}
 
@@ -125,7 +146,6 @@ const Cat = (props) => {
 
 }
 export default Cat
-
 
 
 // const Cat = (props) => {

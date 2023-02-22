@@ -1,29 +1,30 @@
-import {Text, View} from "react-native";
+import {Image, Text, View} from "react-native";
 import React from "react";
-
 const Splash = (props) => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false)
-
     const onNavigate = async () => {
         if (isLoggedIn) {
-            props.navigation.navigate("Main Tab")
+            props.navigation.replace("Main Tab")
         } else {
-            props.navigation.navigate("Auth Stack")
+            props.navigation.replace("Auth Stack")
         }
-
     }
-
     React.useEffect(() => {
         setTimeout(() => {
             onNavigate()
-        }, 500)
+        }, 1500)
     })
 
     return (
-        <View>
-            <Text>
-                Splash
-            </Text>
+        <View style={{
+            justifyContent:'center',
+            alignItems:'center',
+            height:'100%'
+        }}>
+            <Image
+                source={require('../../../assets/images/logo.png')}
+                resizeMode='center'
+            />
         </View>
     )
 }

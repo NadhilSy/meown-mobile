@@ -1,64 +1,71 @@
-import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
-import {colors, typography} from "@/theme";
-import {KeyboardAvoidingView, Text, TouchableOpacity, View, Platform} from "react-native";
-import FormInput from "@/components/FormInput/FormInput";
-import {useState} from "react";
+import {KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, View} from "react-native";
 import useFetchMutation from "@/app/hooks/useFetchMutation";
-import {useNavigate} from "@/app/hooks/useNavigate";
 import {updateCatById} from "@/app/service/catService";
+import FormInput from "@/components/FormInput/FormInput";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import {useState} from "react";
+import {colors} from "@/theme";
+import {readItem} from "@/utils/asyncStorageItem";
 
 const UpdateCat = (props) => {
-
+    const {id} = props.route.params
+    const [error, loading, updateCat] = useFetchMutation(updateCatById, () => {
+        props.navigation.navigate("Cat")
+    })
+    const getUser = async () => {
+        return await readItem("userInfo")
+    }
     const [name, setName] = useState('')
     const [race, setRace] = useState('')
     const [color, setColor] = useState('')
     const [gender, setGender] = useState('')
-    const navigate = useNavigate()
-
-    const [error, loading, update] = useFetchMutation(updateCatById(props.cat.id))
-
-    const onNavigateAfterUpdate = () =>{
-        updateCatById(props.id)
-        props.navigation.navigate("Main Tab")
+    const onNavigateAfterUpdate = async (resp) => {
+        const userInfo = await getUser()
+        const data = {
+            catName: name, race, color, gender
+        }
+        console.log(data)
+        await updateCat({
+            id,
+            data
+        })
     }
-
-    return(
+    return (
         <KeyboardAvoidingView
             style={{
                 paddingTop: Platform.OS === "android" ? 24 : 0,
                 padding: 24
             }}
             behavior="position">
-
+            <Text>Update</Text>
             <View
                 style={{
-                    backgroundColor:colors.white,
-                    borderRadius:12,
-                    height: 600,
+                    backgroundColor: colors.white,
+                    borderRadius: 12,
+                    height: 400,
                     padding: 24
                 }}>
                 <FormInput
-                    label ="Name"
+                    label="Name"
                     onChange={text => setName(text)}
                 />
                 <FormInput
-                    label ="Race"
-                onChange={text => setRace(text)}
+                    label="Race"
+                    onChange={text => setRace(text)}
                 />
                 <FormInput
-                    label ="Color"
+                    label="Color"
                     onChange={text => setColor(text)}
                 />
                 <FormInput
-                    label ="Gender"
+                    label="Gender"
                     onChange={text => setGender(text)}
                 />
                 <PrimaryButton
-                    onPress ={()=>onNavigateAfterUpdate()}
+                    onPress={() => onNavigateAfterUpdate()}
+                    buttonText={"Update Cat"}
                 />
             </View>
-
-
         </KeyboardAvoidingView>
     )
 
