@@ -4,7 +4,7 @@ import {colors, typography} from "@/theme";
 
 const FormInput = (props) => {
     return (
-        <View style={{marginVertical:6}}>
+        <View style={{marginVertical:10,width:'100%'}}>
         <Text
         style={[typography.text,{marginBottom:5, color: colors.primary}]}
         >{props.label}</Text>
@@ -12,15 +12,15 @@ const FormInput = (props) => {
             flexDirection: 'row',
             borderWidth: 0.5,
             borderRadius: 12,
-            padding: 12,
+            alignItems:'center',
             borderColor: colors.gray
         }}>
-            <Icon icon={props.icon}/>
+            <View style={{marginLeft:10}}><Icon icon={props.icon} /></View>
             <TextInput
                 placeholder={props.placeholder}
                 value={props.value}
                 onChangeText={props.onChange}
-                style={{marginLeft: 12}}
+                style={{marginLeft: 12,padding:10,width:'100%'}}
             />
         </View>
         </View>

@@ -3,16 +3,14 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Cat from "../screens/Main/Cat/Cat";
 import Settings from "../screens/Main/Settings/Settings";
 import Order from "../screens/Main/Order/Order";
+import TabNavigation from "@/navigations/TabNavigation";
 
 const Tabs = createBottomTabNavigator();
 
 const MainTab = () => {
     return (
         <Tabs.Navigator>
-            <Tabs.Screen name={"Home"} component={Home}/>
-            <Tabs.Screen name={"Cat"} component={Cat}/>
-            <Tabs.Screen name={"Order"} component={Order}/>
-            <Tabs.Screen name={"Settings"} component={Settings}/>
+            <Tabs.Screen name={"MainNav"} component={TabNavigation}/>
         </Tabs.Navigator>
     )
 }

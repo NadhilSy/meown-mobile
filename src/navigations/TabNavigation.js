@@ -9,7 +9,7 @@ const TabNavigator = createBottomTabNavigator()
 const TabNavigation = () => {
     const LIST_MENUS = [
         {
-            name: 'Home',
+            name: 'Packet',
             title: 'Home',
             component: Home,
             icon: 'paw'
