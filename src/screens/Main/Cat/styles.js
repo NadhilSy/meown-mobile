@@ -4,6 +4,7 @@ import {colors} from "@/theme";
 export default StyleSheet.create({
     container: {
         flex: 1,
+        height:'100%',
         backgroundColor:colors.border
     },
     text: {
@@ -40,9 +41,12 @@ export default StyleSheet.create({
         height: 70,
         justifyContent: 'center',
         alignItems: 'center',
+        position:'absolute',
+        bottom:30,
+        right:20,
         padding: 10,
         borderRadius: 100,
-        backgroundColor: '#e7fc86',
-        elevation:10,
+        backgroundColor: colors.primary,
+        elevation:10
     }
 })

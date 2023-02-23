@@ -76,7 +76,6 @@ const Cat = (props) => {
     }, [data, loading])
     return (
         <View style={styles.container}>
-
             {
                 data?.cats?.length > 0 ?
                 <FlatList
@@ -95,52 +94,13 @@ const Cat = (props) => {
                             onRefresh={
                                 onChangeData
                             }/>}><Text style={[styles.title, {alignSelf: "center"}]}>Cat is Empty</Text>
-
                 </ScrollView>}
-            <View style={{alignItems:"flex-end", paddingBottom:20, paddingRight:20}}>
                 <TouchableOpacity
                     style={styles.roundButton}
                     onPress={() => props.navigation.navigate("AddCat")}
                 >
-                    <Icon icon="plus" color={colors.focused}/>
+                    <Icon icon="plus" color={colors.white}/>
                 </TouchableOpacity>
-            </View>
-
-
-
-            {/*<View>*/}
-            {/*    {data && (*/}
-            {/*        <Text>*/}
-            {/*            {data.owner.userName}*/}
-            {/*        </Text>*/}
-            {/*    )}*/}
-            {/*</View>*/}
-            {/*{food?.length > 0?*/}
-            {/*    <FlatList*/}
-            {/*        data={food}*/}
-            {/*        renderItem={(data) => <RenderMenu food={data.item}/>}*/}
-            {/*        keyExtractor={(data) => data?.item?.id}*/}
-            {/*        onEndReachedThreshold={0.3}*/}
-            {/*        onEndReached={onChangeData}*/}
-            {/*        refreshControl={<RefreshControl refreshing={loading} onRefresh={onChangeData}/>}*/}
-            {/*    /> :*/}
-            {/*    <ScrollView*/}
-            {/*        refreshControl={*/}
-            {/*            <RefreshControl*/}
-            {/*                refreshing={loading}*/}
-            {/*                onRefresh={*/}
-            {/*                    onChangeData*/}
-            {/*                }/>}>{<Text style={[styles.title, {alignSelf:"center"}]}>Food is empty</Text>}*/}
-
-            {/*    </ScrollView>}*/}
-
-            {/*<Button*/}
-            {/*    text={"Add Food"}*/}
-            {/*    onPress={() =>{*/}
-            {/*        props?.navigation.navigate("Details")*/}
-            {/*    }}*/}
-            {/*/>*/}
-
         </View>
     )
 }

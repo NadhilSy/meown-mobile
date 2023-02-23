@@ -1,4 +1,4 @@
-import {Pressable, ScrollView, Text, View} from "react-native";
+import {Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useState} from "react";
 
 const Dropdown = ({title,data, itemPress,style}) => {
@@ -12,16 +12,16 @@ const Dropdown = ({title,data, itemPress,style}) => {
                         {
                             data.length > 0 ? data.map((item) => {
                                 return (
-                                    <Pressable
+                                    <TouchableOpacity
                                         onPress={() => {
                                             itemPress(item.value)
                                             setIsactive(false)
                                         }}
-                                        style={{marginVertical:5,flexDirection:'row'}}
+                                        style={{marginVertical:5,flexDirection:'row',width:'100%'}}
                                         key={item.id}
                                     >
                                         <Text>{item.label}</Text>
-                                    </Pressable>
+                                    </TouchableOpacity>
                                 )
                             }):
                                 <View/>
