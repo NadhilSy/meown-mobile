@@ -2,7 +2,7 @@ import {Alert, Text, View} from "react-native";
 import style from "@/screens/Main/Order/style";
 import Card from "@/components/Card/Card";
 import useFetchMutation from "@/app/hooks/useFetchMutation";
-import {makeTransaction} from "@/app/hooks/transactionService";
+import {makeTransaction} from "@/app/service/transactionService";
 import {colors} from "@/theme";
 import Button from "@/components/Button/Button";
 import {Dropdown} from "@/components";

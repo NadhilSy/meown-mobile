@@ -5,9 +5,10 @@ import useFetchQuery from "@/app/hooks/useFetchQuery";
 import React, {useEffect} from "react";
 import styles from "@/screens/Main/Cat/styles";
 import {colors} from "@/theme";
-
+import loadingAnimation from '../../../../assets/lottie/111426-categories.json'
 import Button from "@/components/Button/Button";
 import Icon from "@/components/Icon/Icon";
+import AnimatedLottieView from "lottie-react-native";
 
 const Cat = (props) => {
     const onChangeData = async () => {
