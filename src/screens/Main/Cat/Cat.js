@@ -1,4 +1,4 @@
-import {Alert, FlatList, RefreshControl, ScrollView, Text, View} from "react-native";
+import {Alert, FlatList, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {deleteCatById, getAllCat} from "@/app/service/catService";
 import useFetchMutation from "@/app/hooks/useFetchMutation";
 import useFetchQuery from "@/app/hooks/useFetchQuery";
@@ -8,6 +8,7 @@ import {colors} from "@/theme";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 
 import Button from "@/components/Button/Button";
+import Icon from "@/components/Icon/Icon";
 
 const Cat = (props) => {
     const {data, fetchQuery: refetch} = useFetchQuery(getAllCat())
@@ -106,6 +107,15 @@ const Cat = (props) => {
                             }/>}><Text style={[styles.title, {alignSelf: "center"}]}>Cat is Empty</Text>
 
                 </ScrollView>}
+            <View style={{alignItems:"flex-end", paddingBottom:20, paddingRight:20}}>
+                <TouchableOpacity
+                    style={styles.roundButton}
+                    onPress={() => props.navigation.navigate("AddCat")}
+                >
+                    <Icon icon="plus" color={colors.focused}/>
+                </TouchableOpacity>
+            </View>
+
 
 
             {/*<View>*/}

@@ -34,5 +34,15 @@ export default StyleSheet.create({
         padding: 5,
         borderRadius: 20,
         elevation:5
+    },
+    roundButton: {
+        width: 70,
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 100,
+        backgroundColor: '#e7fc86',
+        elevation:10,
     }
 })
