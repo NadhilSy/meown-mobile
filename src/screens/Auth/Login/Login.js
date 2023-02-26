@@ -4,7 +4,7 @@ import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import FormInput from "@/components/FormInput/FormInput";
 import {useState, useContext} from "react";
 import useFetchMutation from "@/app/hooks/useFetchMutation";
-import {loginService} from "@/app/service/loginService";
+import {loginService} from "@/app/service/AuthService";
 import {useNavigate} from "@/app/hooks/useNavigate";
 import {saveToken} from "@/utils/token";
 import {setItem} from "@/utils/asyncStorageItem";
@@ -55,14 +55,14 @@ const Login = (props) => {
                     icon="envelope"
                     placeholder="Enter your email"
                     label="Email Address"
-                    onChange={text => setEmail(text)}
+                    onChangeText={text => setEmail(text)}
 
                 />
                 <FormInput
                     icon="key"
                     placeholder="Enter your password"
                     label="Password"
-                    onChange={text => setPassword(text)}
+                    onChangeText={text => setPassword(text)}
                 />
                 <PrimaryButton
                     onPress={() => login({email, password})}

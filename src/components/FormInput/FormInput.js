@@ -19,7 +19,7 @@ const FormInput = (props) => {
             <TextInput
                 placeholder={props.placeholder}
                 value={props.value}
-                onChangeText={props.onChange}
+                {...props}
                 style={{marginLeft: 12,padding:10,width:'100%'}}
             />
         </View>

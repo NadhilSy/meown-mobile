@@ -10,10 +10,11 @@ import {readItem} from "@/utils/asyncStorageItem";
 import UserDetails from "@/screens/Main/Details/User/Index";
 import emptyAnimation from "../../../../assets/lottie/127447-kitty-cat-error-404.json";
 import AnimatedLottieView from "lottie-react-native";
+import {getToken} from "@/utils/token";
 
 const Home = (props) => {
     // const [data,error,loading] = useFetch()
-    const {data, fetchQuery: refetch} = useFetchQuery(getAllPackage())
+    const {data, fetchQuery: refetch,error} = useFetchQuery(getAllPackage())
     const [packet, setPacket] = useState([])
     const [loading, setLoading] = useState(false)
     const onChangeData = async () => {

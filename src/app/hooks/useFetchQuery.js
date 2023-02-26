@@ -12,7 +12,7 @@ const useFetchQuery =(query, params) => {
             const res = params ? await query(params) : await query
             setData(res.data);
         } catch (e) {
-            setError(true)
+            setError(e)
         } finally {
             setFetching(false)
         }

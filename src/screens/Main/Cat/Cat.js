@@ -103,7 +103,8 @@ const Cat = (props) => {
                     data={data?.data}
                     renderItem={(data) =>
                         <RenderCat cat={data.item}/>}
-                    keyExtractor={(data) => data?.item?.id}
+                    keyExtractor={(data) => data?.id
+                    }
                     onEndReachedThreshold={0.3}
                     onEndReached={onChangeData}
                     refreshControl={<RefreshControl refreshing={loading} onRefresh={onChangeData}/>}

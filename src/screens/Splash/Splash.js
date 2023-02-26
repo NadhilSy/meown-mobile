@@ -2,6 +2,7 @@ import {Image, Text, View} from "react-native";
 import React from "react";
 import {readItem} from "@/utils/asyncStorageItem";
 import {getToken} from "@/utils/token";
+
 const Splash = (props) => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false)
     const onNavigate = async () => {
@@ -21,9 +22,9 @@ const Splash = (props) => {
 
     return (
         <View style={{
-            justifyContent:'center',
-            alignItems:'center',
-            height:'100%'
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%'
         }}>
             <Image
                 source={require('../../../assets/images/logo.png')}
