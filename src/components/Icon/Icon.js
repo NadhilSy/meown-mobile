@@ -3,7 +3,7 @@ import {colors} from "@/theme";
 
 const Icon = (props) => {
     return (
-        <FontAwesome name={props.icon} size={24 || props.size} color={props.color||colors.primary}/>
+        <FontAwesome name={props.icon} size={props.size || 24} color={props.color||colors.primary}/>
     )
 }
 
