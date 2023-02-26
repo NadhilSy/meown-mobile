@@ -30,6 +30,7 @@ const AddCat = (props) => {
         }
         await addCat(data)
     }
+
     return (
         <KeyboardAvoidingView
             style={{

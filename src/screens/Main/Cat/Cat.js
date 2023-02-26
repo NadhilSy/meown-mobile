@@ -26,10 +26,13 @@ const Cat = (props) => {
     const {data, fetchQuery: refetch} = useFetchQuery(getAllCat())
     const [cat, setCat] = React.useState([])
     const [loading, setLoading] = React.useState(false)
-    const [errorDelete, loadingDelete, deleteCatMutation] = useFetchMutation(deleteCatById, refetch)
-    const onDelete = (id) = () => {
+    const [errorDelete, loadingDelete, deleteCatMutation] = useFetchMutation(deleteCatById,onChangeData)
+    const onDelete = (id) => {
+        console.log(id)
         deleteCatMutation(id);
-        onChangeData();
+    }
+    if (errorDelete){
+        console.log(errorDelete?.response?.data)
     }
 
     const onNavigateToUpdate = (id) => {
@@ -57,8 +60,9 @@ const Cat = (props) => {
                         color: colors.focused
                     }}>{cat?.cat?.race}</Text>
                 </View>
+                <View style={{flexDirection:'row'}}>
                     <Button
-                        style={{borderRadius: 10,padding:7,marginLeft:15,backgroundColor:colors.primary,width:75,alignItems:'center'}}
+                        style={{borderRadius: 10,padding:7,marginLeft:15,backgroundColor:colors.primary,width:45,alignItems:'center'}}
                         disabled={loadingDelete}
                         onPress={() => {
                             if (cat?.cat) {
@@ -67,7 +71,22 @@ const Cat = (props) => {
                                 })
                             }
                         }}
-                    ><Text style={{color:'white'}}>Edit</Text></Button>
+                    ><Icon icon="edit" color={colors.white} size={18}/>
+                    </Button>
+                    <Button
+                        style={{borderRadius:10, padding:7, marginLeft:5, backgroundColor:colors.red, width:45, alignItems:'center'}}
+                        disabled={loadingDelete}
+                        onPress={()=>{
+                            if (cat.cat){
+                                onDelete(cat?.cat.id)
+                            }
+                        }}
+                    >
+                        <Icon icon="trash" color={colors.white} size={18}/>
+                    </Button>
+                </View>
+
+
             </View>
         )
     }

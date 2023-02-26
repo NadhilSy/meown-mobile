@@ -9,5 +9,6 @@ export const colors = {
     border: "#F7F8F8",
     focused:"#3F3D56",
     pinky:"#FFD6EC",
-    pinkyButton:"#1AC4DB"
+    pinkyButton:"#1AC4DB",
+    red:"#f00a5e"
 }
