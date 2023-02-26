@@ -14,28 +14,32 @@ const TabNavigation = () => {
             name: 'Packet',
             title: 'Home',
             component: Home,
-            icon: 'paw'
+            icon: 'paw',
+            header:false
         }, {
             name: 'Cat',
-            title: 'MyCat',
+            title: 'My Cat',
             component: Cat,
-            icon: 'cat'
+            icon: 'cat',
+            header: true
         },
         {
             name: 'OrderList',
             title: 'Purchase History',
             component: ListOrder,
-            icon: 'scroll'
+            icon: 'scroll',
+            header: true
         }
         , {
             name: 'Setting',
             title: 'Setting',
             component: Settings,
-            icon: 'user-cog'
+            icon: 'user-cog',
+            header: true
         }
     ]
     return (
-        <TabNavigator.Navigator screenOptions={{...TransitionPresets.ScaleFromCenterAndroid, headerShown: false}}>
+        <TabNavigator.Navigator screenOptions={{...TransitionPresets.ScaleFromCenterAndroid, headerShown:false}}>
             {
                 LIST_MENUS.map((item, index) => (
                     <TabNavigator.Screen
@@ -44,6 +48,7 @@ const TabNavigation = () => {
                         key={index}
                         options={
                             {
+                                headerShown:item.header,
                                 tabBarActiveTintColor: colors.focused,
                                 tabBarInactiveTintColor: colors.gray,
                                 tabBarIcon: ({focused}) => (
@@ -53,6 +58,7 @@ const TabNavigation = () => {
                                         color={focused ? colors.focused : colors.gray}
                                     />
                                 ),
+                                title:item.title,
                                 tabBarLabel: item.title,
                                 unmountOnBlur: true
                             }

@@ -9,6 +9,7 @@ import loadingAnimation from '../../../../assets/lottie/111426-categories.json'
 import Button from "@/components/Button/Button";
 import Icon from "@/components/Icon/Icon";
 import AnimatedLottieView from "lottie-react-native";
+import emptyAnimation from "../../../../assets/lottie/127447-kitty-cat-error-404.json";
 
 const Cat = (props) => {
     const onChangeData = async () => {
@@ -97,9 +98,9 @@ const Cat = (props) => {
     return (
         <View style={styles.container}>
             {
-                data?.cats?.length > 0 ?
+                data?.data?.length > 0 ?
                 <FlatList
-                    data={data.cats}
+                    data={data?.data}
                     renderItem={(data) =>
                         <RenderCat cat={data.item}/>}
                     keyExtractor={(data) => data?.item?.id}
@@ -113,7 +114,16 @@ const Cat = (props) => {
                             refreshing={loading}
                             onRefresh={
                                 onChangeData
-                            }/>}><Text style={[styles.title, {alignSelf: "center"}]}>Cat is Empty</Text>
+                            }/>}>
+                    <View style={{alignItems:'center'}}>
+                        <AnimatedLottieView
+                            source={emptyAnimation}
+                            autoPlay={true}
+                            loop={true}
+                            style={{width: 170, height: 300}}
+                        />
+                        <Text style={{color:colors.gray,fontWeight:'bold',fontSize:18}}>Cat is Empty</Text>
+                    </View>
                 </ScrollView>}
                 <TouchableOpacity
                     style={styles.roundButton}

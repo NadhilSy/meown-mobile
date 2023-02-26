@@ -6,10 +6,10 @@ import styles from "@/screens/Main/Home/styles";
 import {colors} from "@/theme";
 
 import {getAllPackage} from "@/app/service/packageService";
-import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
-import Card from "@/components/Card/Card";
 import {readItem} from "@/utils/asyncStorageItem";
 import UserDetails from "@/screens/Main/Details/User/Index";
+import emptyAnimation from "../../../../assets/lottie/127447-kitty-cat-error-404.json";
+import AnimatedLottieView from "lottie-react-native";
 
 const Home = (props) => {
     // const [data,error,loading] = useFetch()
@@ -82,8 +82,14 @@ const Home = (props) => {
                             refreshing={loading}
                             onRefresh={
                                 onChangeData
-                            }/>}><Text style={[styles.title, {alignSelf: "center"}]}>Package is Empty</Text>
-
+                            }/>}>
+                    <AnimatedLottieView
+                        source={emptyAnimation}
+                        autoPlay={true}
+                        loop={true}
+                        style={{width: 170, height: 170}}
+                    />
+                    <Text> Package is empty</Text>
                 </ScrollView>}
         </View>
     )

@@ -44,7 +44,7 @@ const Order = (props) => {
                 </View>
                 <View>
                     <Dropdown
-                        data={loadingGet ? [] : data?.cats?.length > 0 ? data?.cats.map(item => ({
+                        data={loadingGet ? [] : data?.data?.length > 0 ? data?.data.map(item => ({
                             label: item.name,
                             value: item,
                             id: item.id
