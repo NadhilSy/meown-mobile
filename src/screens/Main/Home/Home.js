@@ -45,7 +45,7 @@ const Home = (props) => {
             <Pressable onPress={() => props.navigation.navigate("PacketDetails", {
                 packet: packet?.packet
             })}
-                       style={{justifyContent: 'center', height: '100%', width: '50%'}}>
+                       style={{justifyContent: 'center', width: '50%'}}>
                 <View style={[styles.card, {justifyContent: 'center', height: 100, backgroundColor: colors.primary}]}>
                     <Text style={[{
                         fontWeight: "bold",
@@ -71,7 +71,8 @@ const Home = (props) => {
                     data={data.data}
                     renderItem={(data) =>
                         <RenderPackage packet={data.item}/>}
-                    keyExtractor={(data) => data?.item?.id}
+                    keyExtractor={(data) => data.packageId
+                    }
                     onEndReachedThreshold={0.3}
                     onEndReached={onChangeData}
                     numColumns={2}

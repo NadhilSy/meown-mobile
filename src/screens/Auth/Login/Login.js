@@ -63,6 +63,7 @@ const Login = (props) => {
                     placeholder="Enter your password"
                     label="Password"
                     onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
                 />
                 <PrimaryButton
                     onPress={() => login({email, password})}

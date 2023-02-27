@@ -1,17 +1,16 @@
-import {Image, Text, View} from "react-native";
+import {Image, View} from "react-native";
 import React from "react";
 import {readItem} from "@/utils/asyncStorageItem";
 import {getToken} from "@/utils/token";
 
 const Splash = (props) => {
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false)
     const onNavigate = async () => {
         const userInfo = await readItem("userInfo")
         const token = await getToken()
         if (!userInfo || !token) {
-            props.navigation.replace("Main Tab")
-        } else {
             props.navigation.replace("Auth Stack")
+        } else {
+            props.navigation.replace("Main Tab")
         }
     }
     React.useEffect(() => {

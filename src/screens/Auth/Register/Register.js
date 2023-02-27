@@ -116,6 +116,7 @@ const Register = (props) => {
                         placeholder="Enter your password"
                         label="Password"
                         onChangeText={text => dispatch({type: 'CHANGE_PASSWORD', payload: text})}
+                        secureTextEntry={true}
                     />
                     <PrimaryButton
                         buttonText="Register"

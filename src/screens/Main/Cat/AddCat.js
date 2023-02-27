@@ -50,17 +50,17 @@ const AddCat = (props) => {
                 <FormInput
                     label="Name"
                     placeholder="Enter your cat name"
-                    onChange={text => setName(text)}
+                    onChangeText={text => setName(text)}
                 />
                 <FormInput
                     label="Race"
                     placeholder="Enter race of cat"
-                    onChange={text => setRace(text)}
+                    onChangeText={text => setRace(text)}
                 />
                 <FormInput
                     label="Color"
                     placeholder="Enter your cat color"
-                    onChange={text => setColor(text)}
+                    onChangeText={text => setColor(text)}
                 />
                 <Dropdown data={genderList} title={gender ? gender : 'Select gender'} style={{
                     elevation: 4,

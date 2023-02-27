@@ -6,8 +6,7 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor:colors.border,
         justifyContent:'center',
-        alignItems:'center',
-        height:'100%'
+        alignItems:'center'
     },
     text: {
         fontSize: 18,
